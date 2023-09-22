@@ -1,3 +1,7 @@
+const yargs = require('yargs')
+
+
+
 const { pertanyaan, simpanContact } = require("./contacts");
 
 // karena value dari namaQuestion & emailQuestion berbentuk Promise, maka gunakan async-await.
