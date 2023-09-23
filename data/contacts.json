@@ -1,1 +1,16 @@
-[{"nama":"RizqiSR","email":"rizqi.srahmah27@gmail.com","noHP":"082113125827"}]
+[
+  {
+    "nama": "RizqiSR",
+    "email": "rizqi.srahmah27@gmail.com",
+    "noHP": "082113125827"
+  },
+  { "nama": "Rizqi", "email": "rizqi@gmail.com", "noHP": "082113125827" },
+  { "nama": "Siti", "email": "siti@gmail.com", "noHP": "082111112222" },
+  { "nama": "Rahmah", "email": "rahmah@gmail.com", "noHP": "082122227777" },
+  { "nama": "Kiki", "email": "", "noHP": "082111119999" },
+  {
+    "nama": "RizqiSRahmah",
+    "email": "rizqisrahmah@gmail.com",
+    "noHP": "082127279797"
+  }
+]

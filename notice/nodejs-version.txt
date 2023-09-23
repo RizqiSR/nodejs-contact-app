@@ -1,0 +1,4 @@
+This lesson use:
+
+NodeJS: 16.14.2 version
+NPM: 8.5.0 version

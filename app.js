@@ -1,4 +1,4 @@
-const yargs = require("yargs");
+const yargs = require("yargs"); // https://www.npmjs.com/package/yargs (in this lesson, we use 16.2.0 version)
 const { simpanContact } = require("./contacts");
 
 // // 2. Cara 2 -> menggunakan parameter object :
@@ -28,7 +28,7 @@ yargs.command({
       email: argv.email,
       noHP: argv.noHP,
     };
-    console.log(contact);
+    // console.log(contact);
     simpanContact(argv.nama, argv.email, argv.noHP);
   },
 });
