@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/RizqiSR/nodejs-contact-app/issues"
   },
-  "homepage": "https://github.com/RizqiSR/nodejs-contact-app#readme"
+  "homepage": "https://github.com/RizqiSR/nodejs-contact-app#readme",
+  "dependencies": {
+    "yargs": "^16.2.0"
+  }
 }
