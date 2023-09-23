@@ -23,8 +23,8 @@ const pertanyaan = (pertanyaan) => {
   });
 };
 
-const simpanContact = (nama, email, profesi) => {
-  const contact = { nama, email, profesi }; // 1. buat variable yang memiliki value sebuah Object
+const simpanContact = (nama, email, noHP) => {
+  const contact = { nama, email, noHP }; // 1. buat variable yang memiliki value sebuah Object
   const fileJSON = fs.readFileSync(filePath, "utf-8"); // 2. buka file JSON yang sudah dibuat, dan ubah format ke dalam bentuk string (bukan lagi buffer)
   const contacts = JSON.parse(fileJSON); // 3. Ubah menjadi Javascript object/array of obejcts agar kita bisa memasukan data yang kita input ke data type string
   contacts.push(contact); // 4. karena contacts sudah berbentuk {} (object), maka kita bisa push data inputan ke dalam array contacts
