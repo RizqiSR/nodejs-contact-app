@@ -1,5 +1,5 @@
 const yargs = require("yargs"); // https://www.npmjs.com/package/yargs (in this lesson, we use 16.2.0 version)
-const { simpanContact } = require("./contacts");
+const { simpanContact, listContact } = require("./contacts");
 
 // // 2. Cara 2 -> menggunakan parameter object :
 yargs.command({
@@ -31,7 +31,20 @@ yargs.command({
     // console.log(contact);
     simpanContact(argv.nama, argv.email, argv.noHP);
   },
-});
+}).demandCommand(); // menambahkan warning mencegah user yang sama sekali tidak mengirimkan command apapun
+
+// Menambahkan daftar semua nama & no hp contact
+yargs.command({
+  command:'list',
+  describe:"Menampilkan daftar semua nomor HP dan Nama Contacts",
+  handler() {
+    listContact()
+    /* Output: 
+      Daftar Kontak :
+      RizqiSR: 082113125827
+    */
+  }
+})
 
 yargs.parse();
 

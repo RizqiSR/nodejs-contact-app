@@ -11,10 +11,21 @@ if (!fs.existsSync(dirPath)) {
   fs.writeFileSync(filePath, "[]", "utf-8");
 }
 
-const simpanContact = (nama, email, noHP) => {
-  const contact = { nama, email: email || "", noHP }; // 1. buat variable yang memiliki value sebuah Object
+const loadContact = () => {
   const fileJSON = fs.readFileSync(filePath, "utf-8"); // 2. buka file JSON yang sudah dibuat, dan ubah format ke dalam bentuk string (bukan lagi buffer)
   const contacts = JSON.parse(fileJSON); // 3. Ubah menjadi Javascript object/array of obejcts agar kita bisa memasukan data yang kita input ke data type string
+  return contacts
+}
+
+const simpanContact = (nama, email, noHP) => {
+  const contact = { nama, email: email || "", noHP }; // 1. buat variable yang memiliki value sebuah Object
+
+  /* 
+    ---! 2 baris ini dikeluarkan/diabstraksi ke luar fungsi simpanContact() agar bisa digunakan berulangkali di fungsi lain !---
+    const fileJSON = fs.readFileSync(filePath, "utf-8"); // 2. buka file JSON yang sudah dibuat, dan ubah format ke dalam bentuk string (bukan lagi buffer)
+    const contacts = JSON.parse(fileJSON); // 3. Ubah menjadi Javascript object/array of obejcts agar kita bisa memasukan data yang kita input ke data type string
+  */
+  const contacts = loadContact(); // 3. Ubah menjadi Javascript object/array of obejcts agar kita bisa memasukan data yang kita input ke data type string
 
   // Cek duplikat :
   const duplicate = contacts.find((contact) => contact.nama === nama);
@@ -52,4 +63,16 @@ const simpanContact = (nama, email, noHP) => {
   );
 };
 
-module.exports = { simpanContact };
+const listContact = () => {
+  const contacts = loadContact()
+  console.log(
+    chalk.cyan.inverse.bold(
+      "Daftar Kontak :"
+    )
+  );
+  contacts.forEach((contact, index) => {
+    console.log(`${index + 1}. ${contact.nama}: ${contact.noHP}`);
+  });
+};
+
+module.exports = { simpanContact, listContact };
