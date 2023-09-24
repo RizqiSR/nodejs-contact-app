@@ -14,8 +14,8 @@ if (!fs.existsSync(dirPath)) {
 const loadContact = () => {
   const fileJSON = fs.readFileSync(filePath, "utf-8"); // 2. buka file JSON yang sudah dibuat, dan ubah format ke dalam bentuk string (bukan lagi buffer)
   const contacts = JSON.parse(fileJSON); // 3. Ubah menjadi Javascript object/array of obejcts agar kita bisa memasukan data yang kita input ke data type string
-  return contacts
-}
+  return contacts;
+};
 
 const simpanContact = (nama, email, noHP) => {
   const contact = { nama, email: email || "", noHP }; // 1. buat variable yang memiliki value sebuah Object
@@ -64,15 +64,30 @@ const simpanContact = (nama, email, noHP) => {
 };
 
 const listContact = () => {
-  const contacts = loadContact()
-  console.log(
-    chalk.cyan.inverse.bold(
-      "Daftar Kontak :"
-    )
-  );
+  const contacts = loadContact();
+  console.log(chalk.cyan.inverse.bold("Daftar Kontak :"));
   contacts.forEach((contact, index) => {
     console.log(`${index + 1}. ${contact.nama}: ${contact.noHP}`);
   });
 };
 
-module.exports = { simpanContact, listContact };
+const detailContact = (nama) => {
+  const contacts = loadContact();
+
+  const contact = contacts.find(
+    (contact) => contact.nama.toLowerCase() === nama.toLowerCase()
+  );
+
+  if (!contact) {
+    console.log(chalk.red.inverse.bold(`${nama} tidak ditemukan!`));
+    return false;
+  }
+
+  console.log(chalk.cyan.inverse.bold(contact.nama));
+  console.log(contact.noHP);
+  if (contact.email) {
+    console.log(contact.email);
+  }
+};
+
+module.exports = { simpanContact, listContact, detailContact };
