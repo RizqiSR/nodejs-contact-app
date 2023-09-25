@@ -1,5 +1,5 @@
 const yargs = require("yargs"); // https://www.npmjs.com/package/yargs (in this lesson, we use 16.2.0 version)
-const { simpanContact, listContact, detailContact } = require("./contacts");
+const { simpanContact, listContact, detailContact, deleteContact } = require("./contacts");
 
 // // 2. Cara 2 -> menggunakan parameter object :
 yargs
@@ -63,6 +63,22 @@ yargs.command({
     detailContact(argv.nama);
   },
 });
+
+// Menghapus sebuah kontak berdasarkan nama
+yargs.command({
+  command: 'delete',
+  describe: 'Menghapus sebuah kontak berdasarkan nama',
+  builder: {
+    nama: {
+      describe: 'Nama lengkap',
+      demandOption: true,
+      type: 'string'
+    },
+  },
+  handler(argv) {
+    deleteContact(argv.nama)
+  }
+}) 
 
 yargs.parse();
 
